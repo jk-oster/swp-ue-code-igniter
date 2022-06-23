@@ -1,0 +1,6 @@
+/system/
+/tests/
+/writable/
+.env
+
+.htaccess
