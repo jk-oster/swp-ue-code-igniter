@@ -1,6 +1,7 @@
 /system/
 /tests/
 /writable/
-.env
+/vendor/
 
+.env
 .htaccess
