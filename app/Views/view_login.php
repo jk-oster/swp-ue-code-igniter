@@ -29,7 +29,7 @@
 
         <div>
             <label for="password">Password</label>
-            <input type="text" name="password" value="" size="50"/>
+            <input type="password" name="password" value="" size="50"/>
         </div>
 
         <div><input type="submit" value="Submit"/></div>
