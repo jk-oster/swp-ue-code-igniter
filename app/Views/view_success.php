@@ -1,43 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome to CodeIgniter 4!</title>
-    <meta name="description" content="The small framework with powerful features">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+<?= $this->extend('view_layout') ?>
 
-    <!-- STYLES -->
-    <?php include('Partials/style.php'); ?>
+<?= $this->section('content') ?>
 
+    <h1><?= $headline ?? '' ?></h1>
 
-</head>
-<body>
+    <h3>Your are successfully logged in "<?= $user['firstname'] ?> <?= $user['lastname'] ?>"!</h3>
 
-<!-- HEADER: MENU + HEROE SECTION -->
-<?php include('Partials/header.php'); ?>
+    <p>This is the secret content only you can see...</p>
 
-<!-- CONTENT -->
+    <p><?= anchor('logout', 'Log me out again!') ?></p>
 
-<section>
-
-    <h3>Your are successfully logged in!</h3>
-
-    <p><?= anchor('login', 'Try it again!') ?></p>
-
-</section>
-
-
-<!-- FOOTER: DEBUG INFO + COPYRIGHTS -->
-
-<footer>
-
-
-</footer>
-
-<!-- SCRIPTS -->
-<?php include('Partials/script.php'); ?>
-
-</body>
-
-</html>
+<?= $this->endSection() ?>

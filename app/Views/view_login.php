@@ -1,49 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <meta name="description" content="The small framework with powerful features">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+<?= $this->extend('view_layout') ?>
 
-    <!-- STYLES -->
-    <?php include('Partials/style.php'); ?>
+<?= $this->section('content') ?>
 
+    <h2><?= $headline ?? 'Login' ?></h2>
 
-</head>
-<body>
+    <?php if (isset($headline)) echo "<p>You must log in to access the secret</p>"; ?>
 
-<!-- HEADER: MENU + HEROE SECTION -->
-<?php include('Partials/header.php'); ?>
+    <?php
 
-<!-- CONTENT -->
-
-<section>
-
-
-    <?= $validation->listErrors() ?>
+    if (!empty($_POST) && isset($validation)) {
+        echo $validation->listErrors();
+    }
+    if (!empty($_POST) && isset($loginOkay) && !$loginOkay) {
+        echo "
+            <ul>
+            <li>Username or password invalid!</li>
+            </ul>
+            ";
+    }
+    ?>
 
     <?= form_open('login') ?>
 
-    <h5>Username</h5>
-    <input type="text" name="username" value="" size="50" />
+        <div>
+            <label for="username">Username</label>
+            <input type="text" name="username" value="<?= $username ?? '' ?>" size="50"/>
+        </div>
 
-    <h5>Password</h5>
-    <input type="text" name="password" value="" size="50" />
+        <div>
+            <label for="password">Password</label>
+            <input type="text" name="password" value="" size="50"/>
+        </div>
 
-    <div><input type="submit" value="Submit" /></div>
+        <div><input type="submit" value="Submit"/></div>
 
     </form>
 
-    <p>Not registered yet?</p>
-    <p><?= anchor('register', 'Register now!') ?></p>
+    <p>Not registered yet? <?= anchor('register', 'Register now!') ?></p>
 
-</section>
-
-<!-- SCRIPTS -->
-<?php include('Partials/script.php'); ?>
-
-</body>
-</html>
-
+<?= $this->endSection() ?>

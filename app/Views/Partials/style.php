@@ -23,6 +23,15 @@
     .menu {
         padding: .4rem 2rem;
     }
+
+    label, input {
+        display: block;
+    }
+
+    form div {
+        margin-bottom: 0.5em;
+    }
+
     header ul {
         border-bottom: 1px solid rgba(242, 242, 242, 1);
         list-style-type: none;

@@ -10,12 +10,25 @@
             <li class="menu-toggle">
                 <button onclick="toggleMenu();">&#9776;</button>
             </li>
-            <li class="menu-item hidden">
-                <a href="<?= base_url() ?>/index.php/login">Login</a>
-            </li>
-            <li class="menu-item hidden">
-                <a href="<?= base_url() ?>/index.php/register">Register</a>
-            </li>
+
+            <?php if(!isset($user)) { ?>
+
+                <li class="menu-item hidden">
+                    <?= anchor('login', 'Login') ?>
+                </li>
+                <li class="menu-item hidden">
+                    <?= anchor('register', 'Register') ?>
+                </li>
+
+            <?php } else { ?>
+
+                <li class="menu-item hidden">
+                    <?= anchor('logout', 'Logout') ?>
+                </li>
+
+            <?php } ?>
+
+
         </ul>
     </div>
 

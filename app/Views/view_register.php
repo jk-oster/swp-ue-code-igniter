@@ -1,54 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome to CodeIgniter 4!</title>
-    <meta name="description" content="The small framework with powerful features">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+<?= $this->extend('view_layout') ?>
 
-    <!-- STYLES -->
-    <?php include('Partials/style.php'); ?>
+<?= $this->section('content') ?>
 
+    <h2>Register</h2>
 
-</head>
-<body>
+    <?php
 
-<!-- HEADER: MENU + HEROE SECTION -->
-<?php include('Partials/header.php'); ?>
-
-<!-- CONTENT -->
-
-<section>
-
-
-    <?= $validation->listErrors() ?>
+    if(!empty($_POST) && $validation) {
+        echo $validation->listErrors();
+    }
+    if(!empty($_POST) && !$nameAvailable){
+        echo "
+        <ul>
+        <li>Username or password invalid!</li>
+        </ul>
+        ";
+    }
+    ?>
 
     <?= form_open('register') ?>
 
-    <h5>Username</h5>
-    <input type="text" name="username" value="" size="50" />
+    <div>
+        <label for="firstname">First name</label>
+        <input type="text" name="firstname" value="<?= $firstname ?? '' ?>" size="50" />
+    </div>
 
-    <h5>Password</h5>
-    <input type="text" name="password" value="" size="50" />
+    <div>
+        <label for="lastname">Last name</label>
+        <input type="text" name="lastname" value="<?= $lastname ?? '' ?>" size="50" />
+    </div>
 
-    <h5>Password Confirm</h5>
-    <input type="text" name="passconf" value="" size="50" />
+    <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" value="<?= $username ?? '' ?>" size="50" />
+    </div>
 
-    <h5>Email Address</h5>
-    <input type="text" name="email" value="" size="50" />
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" value="" size="50" />
+    </div>
+
+    <div>
+        <label for="passconf">Password Confirm</label>
+        <input type="password" name="passconf" value="" size="50" />
+    </div>
+
+    <div>
+        <label for="email">Email Address</label>
+        <input type="text" name="email" value="<?= $email ?? '' ?>" size="50" />
+    </div>
 
     <div><input type="submit" value="Submit" /></div>
 
     </form>
 
-    <p>You already have an account?</p>
-    <p><?= anchor('login', 'Login now!') ?></p>
+    <p>You already have an account? <?= anchor('login', 'Login now!') ?></p>
 
-</section>
-
-<?php include('Partials/script.php'); ?>
-
-</body>
-</html>
-
+<?= $this->endSection() ?>
