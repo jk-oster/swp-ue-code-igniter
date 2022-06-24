@@ -6,7 +6,18 @@ class Site extends BaseController
 {
     public function index()
     {
-        echo view('view_site', ['data'=>'Hello World Jakob']);
-        // return view('welcome_message');
+        helper(['form', 'url']);
+
+        $session = session();
+
+        // Check if logged in
+        $currentUser = $session->get('currentUser');
+        if(!empty($currentUser)){
+            return view('view_success', ['user' => $currentUser, 'headline' => 'Home']);
+        }
+        else {
+            return view('view_login', ['headline' => 'Home']);
+        }
     }
+
 }
