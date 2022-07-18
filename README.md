@@ -1,4 +1,7 @@
 # A Simple Login Application with CodeIgniter
+
+This project was built for a uni-assignment.
+
 ## What is CodeIgniter?
 
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
