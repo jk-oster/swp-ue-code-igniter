@@ -33,9 +33,9 @@ class Database extends Config
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-        'username' => 'swpue',
-        'password' => 'swpue',
-        'database' => 'swp4_ue07_osterberger',
+        'username' => 'db',
+        'password' => 'db',
+        'database' => 'db',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

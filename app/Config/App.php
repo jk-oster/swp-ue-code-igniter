@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost/hue7/swp_ue7_osterberger/public/';
+    public $baseURL = 'http://localhost:8081/public/';
 
     /**
      * --------------------------------------------------------------------------
