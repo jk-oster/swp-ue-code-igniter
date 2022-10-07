@@ -6,14 +6,9 @@ class Site extends BaseController
 {
     public function index()
     {
-        helper(['form', 'url']);
-
-        $session = session();
-
         // Check if logged in
-        $currentUser = $session->get('currentUser');
-        if(!empty($currentUser)){
-            return view('view_success', ['user' => $currentUser, 'headline' => 'Home']);
+        if($this->isLoggedIn()){
+            return view('view_success', ['user' => $this->session->get('currentUser'), 'headline' => 'Welcome home']);
         }
         else {
             return view('view_login', ['headline' => 'Home']);

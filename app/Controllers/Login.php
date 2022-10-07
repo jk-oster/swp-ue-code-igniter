@@ -7,15 +7,11 @@ class Login extends BaseController
 {
     public function getIndex()
     {
-        helper(['form', 'url']);
-
         return view('view_login');
     }
 
     public function postIndex()
     {
-        helper(['form', 'url']);
-
         $model = model(User::class);
         $username = $this->request->getPost("username");
         $password = $this->request->getPost("password");
@@ -35,8 +31,7 @@ class Login extends BaseController
             ]);
         }
 
-        $session = session();
-        $session->set([
+        $this->session->set([
             'currentUser' => $user
         ]);
         return redirect()->to('/');

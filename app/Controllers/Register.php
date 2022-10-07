@@ -7,14 +7,11 @@ class Register extends BaseController
 {
     public function getIndex()
     {
-        helper(['form', 'url']);
         return view('view_register');
     }
 
     public function postIndex()
     {
-        helper(['form', 'url']);
-
         $model = model(User::class);
         $username = $this->request->getPost("username");
         $user = $model->where('username', $username)->first();
@@ -44,15 +41,15 @@ class Register extends BaseController
             'username' => $username,
             'firstname' => $this->request->getPost("firstname") ?? '',
             'lastname' => $this->request->getVar("lastname") ?? '',
-            'pw' => password_hash($this->request->getPost("password"), PASSWORD_DEFAULT) ?? '',
+            'pw' => password_hash($this->request->getPost("password"), PASSWORD_DEFAULT),
             'email' => $this->request->getPost("email") ?? '',
             'role' => 1,
         ];
         $model->insert($userData);
         $user = $model->where('username', $username)->first();
 
-        $session = session();
-        $session->set([
+        // Logging in
+        $this->session->set([
             'currentUser' => $user
         ]);
         return redirect()->to('/');

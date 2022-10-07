@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use CodeIgniter\Session\Session;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -35,7 +36,9 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['form', 'url'];
+
+    protected  Session $session;
 
     /**
      * Constructor.
@@ -46,7 +49,11 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
+        $this->session = session();
+    }
 
-        // E.g.: $this->session = \Config\Services::session();
+    public function isLoggedIn(): bool
+    {
+        return !empty($this->session->get('currentUser'));
     }
 }
